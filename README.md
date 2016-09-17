@@ -19,6 +19,8 @@ CloudTrax usually sends requests every 30 seconds, but there is an option to cha
 
 [Marshmallow-SQLAlchemy Documentation](https://marshmallow-sqlalchemy.readthedocs.io/en/latest/)
 
+[Heroku Procfile](https://devcenter.heroku.com/articles/procfile)
+
 #Install
 ```
   git clone https://github.com/f00-/ncompass-cloudtrax.git
