@@ -68,9 +68,9 @@ def recieve():
     parsed_json = json.loads(json_string)
 
     # loop through probe_requests
-    for request in parsed_json['probe_requests']:
+    for probe in parsed_json['probe_requests']:
         # create new ProbeRequest row
-        probe = ProbeRequest(parsed_json['network_id'], parsed_json['node_mac'], request['mac'], request['count'], request['min_signal'], request['max_signal'], request['avg_signal'], request['first_seen'], request['last_seen'], request['associated'])
+        probe = ProbeRequest(parsed_json['network_id'], parsed_json['node_mac'], probe['mac'], probe['count'], probe['min_signal'], probe['max_signal'], probe['avg_signal'], probe['first_seen'], probe['last_seen'], probe['associated'])
         db.session.add(probe)
 
     # commit db changes
@@ -86,9 +86,9 @@ def test():
     parsed_json = json.loads(json_string)
 
     # loop through probe_requests
-    for request in parsed_json['probe_requests']:
+    for probe in parsed_json['probe_requests']:
         # create new ProbeRequest row
-        probe = ProbeRequest(parsed_json['network_id'], parsed_json['node_mac'], request['mac'], request['count'], request['min_signal'], request['max_signal'], request['avg_signal'], request['first_seen'], request['last_seen'], request['associated'])
+        probe = ProbeRequest(parsed_json['network_id'], parsed_json['node_mac'], probe['mac'], probe['count'], probe['min_signal'], probe['max_signal'], probe['avg_signal'], probe['first_seen'], probe['last_seen'], probe['associated'])
         db.session.add(probe)
 
     # commit db changes
