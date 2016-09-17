@@ -2,15 +2,14 @@
 
 #Description
 
-Recieves HTTP POST requests from the [CloudTrax Presence Reporting API](https://help.cloudtrax.com/hc/en-us/articles/207985916-CloudTrax-Presence-Reporting-API
-) containing JSON data containing ProbeRequests
+Receives HTTP POST requests from the [CloudTrax Presence Reporting API](https://help.cloudtrax.com/hc/en-us/articles/207985916-CloudTrax-Presence-Reporting-API
+) containing JSON data containing ProbeRequests.
 
-Parses JSON, stores each ProbeRequest as a row in a SQLite database (example.db) with these columns: node mac address, client mac address, count , max/min/average signal, first seen, and last seen
+Parses JSON and stores each item in ProbeRequests as a row in example.db (SQLite). 
 
-Displays all ProbeRequests recieved from CloudTrax
+Displays all ProbeRequests received from CloudTrax
 
 CloudTrax usually sends requests every 30 seconds, but there is an option to change the rate.
-
 #Install
 ```
   git clone https://github.com/f00-/ncompass-cloudtrax.git
