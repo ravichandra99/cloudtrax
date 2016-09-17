@@ -88,29 +88,34 @@ Python, Flask, SQLAlchemy, and Marshmallow
   
 #Usage
 
+Shows table of ProbeRequests
+
 ```
   /
   /?limit=100
 ```
 
-Shows table of ProbeRequests
+Filters table of ProbeRequests by node or client's mac address
 
 ```
   /filter?mac=
   /filter?node_mac=
   /filter?mac=&node_mac=
-
-```
-  /receive
 ```
 
 Receives HTTP Post request from Cloudtrax
 
 ```
-  /test
+  /receive
 ```
 
-Adds sample ProbeRequests to the database
+
+Adds test ProbeRequests to the database
+
+
+```
+  /test
+```
 
 #Note about iPhones/iOS
 iOS sends a random mac address to wifi networks while scanning, so you can only track iOS devices after they have connected to wifi (when associated = 1 in probe request)
