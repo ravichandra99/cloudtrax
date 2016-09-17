@@ -2,30 +2,48 @@
 
 #Description
 
-#Install
+Recieves HTTP POST requests from the CloudTrax Presence Reporting API containing JSON data containing ProbeRequests
 
-  clone repository
-  cd repository
+Parses JSON, stores each ProbeRequest as a row in a SQLite database (example.db) with these columns: node mac address, client mac address, count , max/min/average signal, first seen, and last seen
+
+Displays all ProbeRequests recieved from CloudTrax
+
+CloudTrax usually sends requests every 30 seconds, but there is an option to change the rate.
+
+[CloudTrax Presence Reporting API Documentation](https://help.cloudtrax.com/hc/en-us/articles/207985916-CloudTrax-Presence-Reporting-API
+)
+
+[Flask Documentation](http://flask.pocoo.org/)
+
+[Flask-SQLAlchemy Documentation](http://flask-sqlalchemy.pocoo.org/2.1/)
+
+[Marshmallow-SQLAlchemy Documentation](https://marshmallow-sqlalchemy.readthedocs.io/en/latest/)
+
+#Install
+```
+  git clone https://github.com/f00-/ncompass-cloudtrax.git
+  cd ncompass-cloudtrax.git
   virtualenv env
   source env/bin/activate
   pip install -r requirements.txt
   python app.py
-
+```
 #Usage
 
+```
   /
-
+```
 
 Shows table of ProbeRequests
 
-
+```
   /receive
-
+```
 
 Receives HTTP Post request from Cloudtrax
 
-
+```
   /test
-
+```
 
 Adds sample ProbeRequests to the database
