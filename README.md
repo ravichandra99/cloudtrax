@@ -2,25 +2,13 @@
 
 #Description
 
-node_mac 	MAC address of the Access Point reporting the presence data. 
+Recieves HTTP POST requests from the CloudTrax Presence Reporting API, with JSON data.
 
-mac 	MAC address of the end client device for which presence data is being reported.
+Parses JSON, stores each ProbeRequest as a row in a SQLite database (example.db) with these columns: node mac address, client mac address, count , max/min/average signal, first seen, and last seen
 
-count 	Number of times the specific end client device was seen by the AP, within the time period specified by the “First seen” and “Last seen” timestamps.
+Displays all ProbeRequests
 
-min_signal	Lowest RSSI reading on the AP for the specific client within the time period specified by the “First seen” and “Last seen” timestamps.
-
-max_signal	Highest RSSI reading on the AP for the specific client within the time period specified by the “First seen” and “Last seen” timestamps. 
-
-avg_signal 	Average RSSI reading on the AP for the specific client within the time period specified by the “First seen” and “Last seen” timestamps. 
-
-first_seen	Timestamp of the first time this client was seen, during the reporting period
-
-last_seen	Timestamp of the last time this client was seen, during the reporting period
-
-associated	Indication of whether the client is associated to the AP or not.
-
-CloudTrax Presence Reporting Documentation:
+CloudTrax Presence Reporting API Documentation:
 https://help.cloudtrax.com/hc/en-us/articles/207985916-CloudTrax-Presence-Reporting-API
 
 #Install
