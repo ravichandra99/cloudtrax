@@ -54,9 +54,9 @@ def show():
 
     # retrieve ProbeRequests
     if 'limit' in request.args:
-        probes = ProbeRequest.query.order_by(ProbeRequest.last_seen).limit(request.args.get('limit')).all()
+        probes = ProbeRequest.query.order_by(ProbeRequest.last_seen.desc()).limit(request.args.get('limit')).all()
     else:
-        probes = ProbeRequest.query.order_by(ProbeRequest.last_seen).all()
+        probes = ProbeRequest.query.order_by(ProbeRequest.last_seen.desc()).all()
 
     for probe in probes:
         probe.first_seen = arrow.get(probe.first_seen).humanize()
