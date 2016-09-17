@@ -5,8 +5,6 @@ import json
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///example.db'
-
-# Order matters: Initialize SQLAlchemy before Marshmallow
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
@@ -46,14 +44,15 @@ class ProbeRequestSchema(ma.ModelSchema):
 
 @app.route("/")
 def show():
+    # retrieve all ProbeRequests
     probes = ProbeRequest.query.all()
     return render_template('show.html', probes=probes)
 
 @app.route('/recieve', methods=['POST'])
 def recieve():
+    # get json that cloudtrax HTTP POST'd to this URL
     json_string = request.get_json(silent=True)
-
-    #TODO: validate key from cloudtrax
+    parsed_json = json.loads(json_string)
 
     # loop through probe_requests
     for request in parsed_json['probe_requests']:
@@ -64,7 +63,6 @@ def recieve():
     # commit db changes
     db.session.commit()
 
-    #return success
     return render_template('recieve.html', data="success!")
 
 
