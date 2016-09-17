@@ -59,7 +59,7 @@ def show():
         probes = ProbeRequest.query.order_by(ProbeRequest.last_seen.desc()).all()
 
     for probe in probes:
-        probe.first_seen = arrow.get(probe.first_seen)format('YYYY-MM-DD HH:mm:ss ZZ')
+        probe.first_seen = arrow.get(probe.first_seen).format('YYYY-MM-DD HH:mm:ss ZZ')
         probe.last_seen = arrow.get(probe.last_seen).format('YYYY-MM-DD HH:mm:ss ZZ')
 
     return render_template('show.html', probes=probes)
@@ -116,7 +116,7 @@ def filter():
         probes = None
 
     for probe in probes:
-        probe.first_seen = arrow.get(probe.first_seen)format('YYYY-MM-DD HH:mm:ss ZZ')
+        probe.first_seen = arrow.get(probe.first_seen).format('YYYY-MM-DD HH:mm:ss ZZ')
         probe.last_seen = arrow.get(probe.last_seen).format('YYYY-MM-DD HH:mm:ss ZZ')
 
     return render_template('show.html', probes=probes)
