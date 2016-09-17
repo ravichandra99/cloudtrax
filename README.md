@@ -22,6 +22,10 @@ CloudTrax usually sends requests every 30 seconds, but there is an option to cha
 
 [Heroku Procfile](https://devcenter.heroku.com/articles/procfile)
 
+[Virtualenv Documentation](https://virtualenv.pypa.io/en/stable/)
+
+[pip and requirements.txt](https://pip.readthedocs.io/en/1.1/requirements.html)
+
 #Install
 ```
   git clone https://github.com/f00-/ncompass-cloudtrax.git
