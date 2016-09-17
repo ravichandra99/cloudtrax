@@ -29,7 +29,7 @@ CloudTrax usually sends requests every 30 seconds, but there is an option to cha
   python app.py
 ```
 
-  Go to http://127.0.0.1:5000/test to add sample ProbeRequests
+  Go to http://127.0.0.1:5000/test to add sample ProbeRequests and go to http://127.0.0.1:5000/ to view them
   
 #Usage
 
