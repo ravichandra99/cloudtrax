@@ -8,13 +8,19 @@ Parses JSON, stores each ProbeRequest as a row in a SQLite database (example.db)
 
 Displays all ProbeRequests
 
-[CloudTrax Presence Reporting API Documentation:](https://help.cloudtrax.com/hc/en-us/articles/207985916-CloudTrax-Presence-Reporting-API
+[CloudTrax Presence Reporting API Documentation](https://help.cloudtrax.com/hc/en-us/articles/207985916-CloudTrax-Presence-Reporting-API
 )
+
+[Flask Documentation](http://flask.pocoo.org/)
+
+[Flask-SQLAlchemy Documentation](http://flask-sqlalchemy.pocoo.org/2.1/)
+
+[Marshmallow-SQLAlchemy Documentation](https://marshmallow-sqlalchemy.readthedocs.io/en/latest/)
 
 #Install
 ```
-  clone repository
-  cd repository
+  git clone https://github.com/f00-/ncompass-cloudtrax.git
+  cd ncompass-cloudtrax.git
   virtualenv env
   source env/bin/activate
   pip install -r requirements.txt
