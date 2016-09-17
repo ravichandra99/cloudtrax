@@ -9,7 +9,7 @@
 
 3. Displays all ProbeRequests from example.db
 
-CloudTrax usually sends requests every 30 seconds, but there is an option to change the rate.
+CloudTrax usually sends a request every 30 seconds, but there is an option to change the rate.
 
 Python, Flask, SQLAlchemy, and Marshmallow
 
