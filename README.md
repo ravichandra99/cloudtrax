@@ -2,11 +2,13 @@
 
 #Description
 
-Recieves HTTP POST requests from the CloudTrax Presence Reporting API every 30 seconds containing JSON data
+Recieves HTTP POST requests from the CloudTrax Presence Reporting API containing JSON data
 
 Parses JSON, stores each ProbeRequest as a row in a SQLite database (example.db) with these columns: node mac address, client mac address, count , max/min/average signal, first seen, and last seen
 
 Displays all ProbeRequests
+
+CloudTrax usually sends requests every 30 seconds, but there is an option to change the rate.
 
 [CloudTrax Presence Reporting API Documentation](https://help.cloudtrax.com/hc/en-us/articles/207985916-CloudTrax-Presence-Reporting-API
 )
