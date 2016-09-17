@@ -107,7 +107,7 @@ Receives HTTP Post request from Cloudtrax
 Adds sample ProbeRequests to the database
 
 #Note about iPhones/iOS
-iOS sends a random mac address to wifi networks while scanning, so you can only track iOS devices after they have connected to wifi (associated = 1 in probe request)
+iOS sends a random mac address to wifi networks while scanning, so you can only track iOS devices after they have connected to wifi (when associated = 1 in probe request)
 
 #Dependency Documentation
 
