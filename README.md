@@ -90,9 +90,15 @@ Python, Flask, SQLAlchemy, and Marshmallow
 
 ```
   /
+  /?limit=100
 ```
 
 Shows table of ProbeRequests
+
+```
+  /filter?mac=
+  /filter?node_mac=
+  /filter?mac=&node_mac=
 
 ```
   /receive
