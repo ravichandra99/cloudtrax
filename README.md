@@ -8,8 +8,8 @@ Parses JSON, stores each ProbeRequest as a row in a SQLite database (example.db)
 
 Displays all ProbeRequests
 
-CloudTrax Presence Reporting API Documentation:
-https://help.cloudtrax.com/hc/en-us/articles/207985916-CloudTrax-Presence-Reporting-API
+[CloudTrax Presence Reporting API Documentation:](https://help.cloudtrax.com/hc/en-us/articles/207985916-CloudTrax-Presence-Reporting-API
+)
 
 #Install
 ```
