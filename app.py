@@ -64,7 +64,7 @@ def show():
 @app.route('/recieve', methods=['POST'])
 def recieve():
     # get json that cloudtrax HTTP POST'd to this URL
-    json_string = request.get_json(silent=True)
+    json_string = request.data
     parsed_json = json.loads(json_string)
 
     # loop through probe_requests
@@ -96,6 +96,7 @@ def test():
 
     #return success
     return render_template('recieve.html', data="success!")
+
 
 # this code only executes if file is run directly
 if __name__ == "__main__":
