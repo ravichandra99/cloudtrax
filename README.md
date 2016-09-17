@@ -11,21 +11,6 @@ Displays all ProbeRequests recieved from CloudTrax
 
 CloudTrax usually sends requests every 30 seconds, but there is an option to change the rate.
 
-[CloudTrax Presence Reporting API Documentation](https://help.cloudtrax.com/hc/en-us/articles/207985916-CloudTrax-Presence-Reporting-API
-)
-
-[Flask Documentation](http://flask.pocoo.org/)
-
-[Flask-SQLAlchemy Documentation](http://flask-sqlalchemy.pocoo.org/2.1/)
-
-[Marshmallow-SQLAlchemy Documentation](https://marshmallow-sqlalchemy.readthedocs.io/en/latest/)
-
-[Heroku Procfile](https://devcenter.heroku.com/articles/procfile)
-
-[Virtualenv Documentation](https://virtualenv.pypa.io/en/stable/)
-
-[pip and requirements.txt](https://pip.readthedocs.io/en/1.1/requirements.html)
-
 #Install
 ```
   git clone https://github.com/f00-/ncompass-cloudtrax.git
@@ -57,3 +42,20 @@ Receives HTTP Post request from Cloudtrax
 ```
 
 Adds sample ProbeRequests to the database
+
+#Dependency Documentation
+
+[CloudTrax Presence Reporting API Documentation](https://help.cloudtrax.com/hc/en-us/articles/207985916-CloudTrax-Presence-Reporting-API
+)
+
+[Flask Documentation](http://flask.pocoo.org/)
+
+[Flask-SQLAlchemy Documentation](http://flask-sqlalchemy.pocoo.org/2.1/)
+
+[Marshmallow-SQLAlchemy Documentation](https://marshmallow-sqlalchemy.readthedocs.io/en/latest/)
+
+[Heroku Procfile](https://devcenter.heroku.com/articles/procfile)
+
+[Virtualenv Documentation](https://virtualenv.pypa.io/en/stable/)
+
+[pip and requirements.txt](https://pip.readthedocs.io/en/1.1/requirements.html)
