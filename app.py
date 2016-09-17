@@ -51,8 +51,12 @@ class ProbeRequestSchema(ma.ModelSchema):
 # show stored ProbeRequests
 @app.route("/")
 def show():
-    # retrieve all ProbeRequests
-    probes = ProbeRequest.query.all()
+
+    # retrieve ProbeRequests
+    if 'limit' in request.args:
+        probes = ProbeRequest.query.limit(request.args.get('limit')).all()
+    else:
+        probes = ProbeRequest.query.all()
 
     for probe in probes:
         probe.first_seen = arrow.get(probe.first_seen).humanize()
@@ -100,7 +104,16 @@ def test():
 @app.route('/filter')
 def filter():
     mac = request.args.get('mac')
-    probes = ProbeRequest.query.filter_by(mac=mac).all()
+    node_mac = request.args.get('node_mac')
+
+    if 'mac' in request.args and 'node_mac' in request.args:
+        probes = ProbeRequest.query.filter_by(mac=mac).filter_by(node_mac=node_mac).all()
+    elif 'node_mac' in request.args:
+        probes = ProbeRequest.query.filter_by(node_mac=node_mac).all()
+    elif 'mac' in request.args:
+        probes = ProbeRequest.query.filter_by(mac=mac).all()
+    else:
+        probes = None
 
     for probe in probes:
         probe.first_seen = arrow.get(probe.first_seen).humanize()
