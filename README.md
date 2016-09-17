@@ -2,7 +2,8 @@
 
 #Description
 
-Recieves HTTP POST requests from the CloudTrax Presence Reporting API containing JSON data containing ProbeRequests
+Recieves HTTP POST requests from the [CloudTrax Presence Reporting API](https://help.cloudtrax.com/hc/en-us/articles/207985916-CloudTrax-Presence-Reporting-API
+) containing JSON data containing ProbeRequests
 
 Parses JSON, stores each ProbeRequest as a row in a SQLite database (example.db) with these columns: node mac address, client mac address, count , max/min/average signal, first seen, and last seen
 
