@@ -65,8 +65,8 @@ def recieve():
     for request in parsed_json['probe_requests']:
         # create new ProbeRequest row
         probe = ProbeRequest(parsed_json['network_id'], parsed_json['node_mac'], request['mac'], request['count'], request['min_signal'], request['max_signal'], request['avg_signal'], request['first_seen'], request['last_seen'], request['associated'])
-
         db.session.add(probe)
+        
     # commit db changes
     db.session.commit()
 
