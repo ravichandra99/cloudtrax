@@ -97,18 +97,6 @@ def test():
     #return success
     return render_template('recieve.html', data="success!")
 
-@app.route('/filter')
-def filter():
-    mac = request.args.get('mac')
-    probes = ProbeRequest.query.filter_by(mac=mac).all()
-
-    for probe in probes:
-        probe.first_seen = arrow.get(probe.first_seen).humanize()
-        probe.last_seen = arrow.get(probe.last_seen).format('YYYY-MM-DD HH:mm:ss ZZ')
-
-    return render_template('show.html', probes=probes)
-
-
 # this code only executes if file is run directly
 if __name__ == "__main__":
     # creates database with models
