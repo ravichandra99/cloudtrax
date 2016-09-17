@@ -2,6 +2,7 @@ from flask import Flask, request, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 import json
+import arrow
 
 # initialize flask as app, sqlalchemy as db & marshmallow as ma
 # also set database URI
@@ -24,7 +25,7 @@ class ProbeRequest(db.Model):
     last_seen = db.Column(db.String(120))
     associated = db.Column(db.String(120))
 
-    def __init__(self, network_id, node_mac, mac, count, min_signal, max_signal, 
+    def __init__(self, network_id, node_mac, mac, count, min_signal, max_signal,
                     avg_signal, first_seen, last_seen, associated):
         self.network_id = network_id
         self.node_mac = node_mac
@@ -52,6 +53,11 @@ class ProbeRequestSchema(ma.ModelSchema):
 def show():
     # retrieve all ProbeRequests
     probes = ProbeRequest.query.all()
+
+    for probe in probes:
+        probe.first_seen = arrow.get(probe.first_seen).humanize()
+        probe.last_seen = arrow.get(probe.last_seen).format('YYYY-MM-DD HH:mm:ss ZZ')
+
     return render_template('show.html', probes=probes)
 
 # store ProbeRequests from Cloudtrax
@@ -66,7 +72,7 @@ def recieve():
         # create new ProbeRequest row
         probe = ProbeRequest(parsed_json['network_id'], parsed_json['node_mac'], request['mac'], request['count'], request['min_signal'], request['max_signal'], request['avg_signal'], request['first_seen'], request['last_seen'], request['associated'])
         db.session.add(probe)
-        
+
     # commit db changes
     db.session.commit()
 
@@ -84,12 +90,24 @@ def test():
         # create new ProbeRequest row
         probe = ProbeRequest(parsed_json['network_id'], parsed_json['node_mac'], request['mac'], request['count'], request['min_signal'], request['max_signal'], request['avg_signal'], request['first_seen'], request['last_seen'], request['associated'])
         db.session.add(probe)
-        
+
     # commit db changes
     db.session.commit()
 
     #return success
     return render_template('recieve.html', data="success!")
+
+@app.route('/filter')
+def filter():
+    mac = request.args.get('mac')
+    probes = ProbeRequest.query.filter_by(mac=mac).all()
+
+    for probe in probes:
+        probe.first_seen = arrow.get(probe.first_seen).humanize()
+        probe.last_seen = arrow.get(probe.last_seen).format('YYYY-MM-DD HH:mm:ss ZZ')
+
+    return render_template('show.html', probes=probes)
+
 
 # this code only executes if file is run directly
 if __name__ == "__main__":
