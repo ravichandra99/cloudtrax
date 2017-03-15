@@ -11,6 +11,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///example.db'
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
+# https://help.cloudtrax.com/hc/en-us/articles/207985916-CloudTrax-Presence-Reporting-API
 # sqlalchemy model
 class ProbeRequest(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -121,6 +122,20 @@ def filter():
 
     return render_template('show.html', probes=probes)
 
+@app.route('/nodes_seen/<mac>')
+def nodes_seen(mac):
+    probes = ProbeRequest.query.filter_by(mac=mac).all()
+    nodes_seen = []
+    for probe in probes:
+        nodes_seen.push(probe.node_mac)
+
+    return nodes_seen
+
+@app.rotue('/last_seen')
+def last_seen(mac):
+    probes = ProbeRequest.query.filter_by(mac=mac).all()
+    #sort by last seen in ascending order
+    #return first value
 
 # this code only executes if file is run directly
 if __name__ == "__main__":
