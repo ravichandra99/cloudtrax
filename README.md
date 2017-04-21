@@ -1,6 +1,6 @@
-#NCompass-Cloudtrax
+# NCompass-Cloudtrax
 
-#Description
+# Description
 
 1. Receives HTTP POST requests from the [CloudTrax Presence Reporting API](https://help.cloudtrax.com/hc/en-us/articles/207985916-CloudTrax-Presence-Reporting-API
 ) containing JSON
