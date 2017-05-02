@@ -1,15 +1,13 @@
 # NCompass-Cloudtrax
 
-# Description
-
-1. Receives HTTP POST requests from the [CloudTrax Presence Reporting API](https://help.cloudtrax.com/hc/en-us/articles/207985916-CloudTrax-Presence-Reporting-API
+Receives HTTP POST requests from the [CloudTrax Presence Reporting API](https://help.cloudtrax.com/hc/en-us/articles/207985916-CloudTrax-Presence-Reporting-API
 ) containing JSON
 
-2. Parses JSON and stores each item in probe_requests as a row in example.db (SQLite)
+Parses JSON and stores each item in probe_requests as a row in example.db (SQLite)
 
-3. Displays all ProbeRequests from example.db
+Displays all ProbeRequests from example.db
 
-CloudTrax usually sends a request every 30 seconds, but there is an option to change the rate.
+CloudTrax usually sends a request every 30 seconds, but there is an option to change the rate to 60 seconds for example
 
 Python, Flask, SQLAlchemy, and Marshmallow
 
@@ -117,10 +115,12 @@ Adds test ProbeRequests to the database
   /test
 ```
 
-#Note about iPhones/iOS
+# Note about iPhones/iOS
 iOS sends a random mac address to wifi networks while scanning, so you can only track iOS devices after they have connected to wifi (when associated = 1 in probe request)
 
-#Dependency Documentation
+[Analysis of iOS 8 MAC Randomization on Locationing](http://mpact.zebra.com/documents/iOS8-White-Paper.pdf)
+
+# Dependency Documentation
 
 [CloudTrax Presence Reporting API Documentation](https://help.cloudtrax.com/hc/en-us/articles/207985916-CloudTrax-Presence-Reporting-API
 )
