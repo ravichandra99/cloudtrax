@@ -9,6 +9,9 @@ Displays all ProbeRequests from example.db
 
 CloudTrax usually sends a request every 30 seconds, but there is an option to change the rate to 60 seconds for example
 
+this is part of a pipeline, the data will get processed with this pyspark script running on databricks
+https://gist.github.com/f00-/9039de3459a0e10ce8016f41eddda39a
+
 Python, Flask, SQLAlchemy, and Marshmallow
 
 ## Sample JSON
