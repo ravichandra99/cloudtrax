@@ -75,7 +75,7 @@ Python, Flask, SQLAlchemy, and Marshmallow
 }
 ```
 
-#Install
+# Install
 ```
   git clone https://github.com/f00-/ncompass-cloudtrax.git
   cd ncompass-cloudtrax
@@ -87,7 +87,7 @@ Python, Flask, SQLAlchemy, and Marshmallow
 
   Go to http://127.0.0.1:5000/test to add sample ProbeRequests and go to http://127.0.0.1:5000/ to view them
   
-#Usage
+# Usage
 
 Shows table of ProbeRequests
 
