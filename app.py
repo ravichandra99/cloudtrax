@@ -102,6 +102,29 @@ def test():
     #return success
     return render_template('recieve.html', data="success!")
 
+@app.route('/receive' ,methods = ['POST'])
+def receive():
+    print('im here')
+    # sample json string
+    # json_string = '{"network_id":179283,"node_mac":"AC:86:74:61:4F:C0","version":1,"probe_requests": [{"mac":"14:2d:27:29:16:f7","count":26,"min_signal":-74,"max_signal":-64,"avg_signal":-68,"first_seen":1455845796,"last_seen":1455845819,"associated":false},{"mac":"48:5a:3f:37:de:f7","count":10,"min_signal":-37,"max_signal":-26,"avg_signal":-30,"first_seen":1455845791,"last_seen":1455845811,"associated":true},{"mac":"4e:20:5d:18:d0:ab","count":1,"min_signal":-90,"max_signal":-90,"avg_signal":-90,"first_seen":1455845809,"last_seen":1455845809,"associated":false},{"mac":"68:96:7b:c8:8b:e9","count":4,"min_signal":-54,"max_signal":-5,"avg_signal":-27,"first_seen":1455845817,"last_seen":1455845817,"associated":false},{"mac":"80:19:34:b8:bc:1c","count":2,"min_signal":-65,"max_signal":-61,"avg_signal":-63,"first_seen":1455845819,"last_seen":1455845820,"associated":false}]}'
+    # parsed_json = json.loads(json_string)
+    json_string = request.data
+    print(json_string)
+    parsed_json = json.loads(json_string)
+
+
+    # loop through probe_requests
+    for probe in parsed_json['probe_requests']:
+        # create new ProbeRequest row
+        probe = ProbeRequest(parsed_json['network_id'], parsed_json['node_mac'], probe['mac'], probe['count'], probe['min_signal'], probe['max_signal'], probe['avg_signal'], probe['first_seen'], probe['last_seen'], probe['associated'])
+        db.session.add(probe)
+
+    # commit db changes
+    db.session.commit()
+
+    #return success
+    return render_template('recieve.html', data="success!")
+
 @app.route('/filter')
 def filter():
     mac = request.args.get('mac')
@@ -131,7 +154,7 @@ def nodes_seen(mac):
 
     return nodes_seen
 
-@app.rotue('/last_seen')
+@app.route('/last_seen')
 def last_seen(mac):
     probes = ProbeRequest.query.filter_by(mac=mac).all()
     #sort by last seen in ascending order
